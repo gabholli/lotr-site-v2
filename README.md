@@ -2,7 +2,7 @@
 Lord of the Rings information website
 
 ## Description
-A website containing information pertaining to the Lord of the Rings using Next.js with App Router, Tailwind CSS, and TypeScript.
+A website containing information pertaining to the Lord of the Rings created using Next.js with App Router, Tailwind CSS, and TypeScript.
 
 ## Getting Started
 ### Dependencies

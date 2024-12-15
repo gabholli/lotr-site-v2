@@ -1,4 +1,4 @@
 export interface Book {
-    id: number
+    _id: number
     name: string
 }

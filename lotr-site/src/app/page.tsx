@@ -29,12 +29,16 @@ export default function Home() {
 
   // console.log(book.map(b => b.name))
   const books = book.map(b => {
-    return <p key={b.id}>{b.name}</p>
+    return <p key={b._id}>{b.name}</p>
   })
+
+
   return (
-    <main>
-      <h1>Choose a book:</h1>
-      <div>
+    <main className="flex flex-col justify-center items-center min-h-svh
+      gap-y-10">
+      <h1 className="text-3xl underline">Choose a book:</h1>
+      <div className="flex flex-col justify-center items-center gap-y-10
+        text-xl">
         {books}
       </div>
     </main>

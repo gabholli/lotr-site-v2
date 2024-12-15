@@ -10,9 +10,7 @@ A web broswer is needed.
 ### Installing
 No installation required.
 ### Executing program
-To eccess, go to gabholli-lotr-site.netlify.app
-
-command to run if program contains helper info
+To eccess, go to https://gabholli-lotr-site.netlify.app
 ## Authors
 Gabe Hollifield
 

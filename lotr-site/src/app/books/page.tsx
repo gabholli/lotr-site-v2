@@ -34,7 +34,7 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col justify-center items-center min-h-svh
+        <main className="flex flex-col justify-center items-center
       gap-y-10">
             <h1 className="text-xl lg:text-5xl xl:text-8xl underline">Choose one of the following:</h1>
             <div className="flex flex-col justify-center items-center gap-y-10

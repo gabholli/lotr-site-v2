@@ -1,24 +1,25 @@
 "use client"
 
-import axios from "axios";
-import { useEffect, useState } from "react"
-import { Book } from "../types/types"
-import Link from "next/link"
+import axios from 'axios'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { Movie } from '../types/types'
 
-export default function BookList() {
+function MovieList() {
 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    const [book, setBook] = useState<Book[]>([])
+    const [error, setError] = useState<string | null>(null)
+    const [movie, setMovie] = useState<Movie[]>([])
 
     useEffect(() => {
         setLoading(true)
 
         // Fetch from local API route (not external API)
         axios
-            .get("/api/book")
+            .get("/api/movie")
             .then((response) => {
-                setBook(response.data.docs)
+                setMovie(response.data.docs)
+                console.log(response.data.docs)
             })
             .catch((e) => {
                 setError(e)
@@ -27,16 +28,6 @@ export default function BookList() {
                 setLoading(false)
             })
     }, [])
-
-    // console.log(book.map(b => b.name))
-    const books = book?.map(b => {
-        return <Link
-            className="hover:underline"
-            href={`/books/${b._id}`}
-            key={b._id}
-        >{b.name}
-        </Link>
-    })
 
     if (loading) {
         return (
@@ -69,18 +60,21 @@ export default function BookList() {
         )
     }
 
-
     return (
         <main className="flex flex-col justify-center items-center
       gap-y-16">
             <div className='flex flex-col justify-center items-center gap-y-8 lg:gap-y-10 bg-white
                 p-6 md:p-12 m-2 rounded-3xl'>
-                <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find chapters for one of the following books:</h1>
+                <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find information for one of the following movies:</h1>
                 <div className="flex flex-col justify-center items-center gap-y-10
         text-xl lg:text-3xl xl:text-3xl">
-                    {books}
+                    <p>{movie[6]?.name}</p>
+                    <p>{movie[5]?.name}</p>
+                    <p>{movie[7]?.name}</p>
                 </div>
             </div>
         </main>
     )
 }
+
+export default MovieList

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export async function GET() {
+    console.log(process.env.VITE_SOME_KEY)
     try {
         const response = await axios.get('https://the-one-api.dev/v2/movie', {
             headers: {
@@ -11,7 +12,7 @@ export async function GET() {
 
         return new Response(JSON.stringify(response.data), { status: 200 })
     } catch (error) {
-        console.error(error);
-        return new Response('Failed to fetch books', { status: 500 })
+        console.error(error)
+        return new Response('Failed to fetch movies', { status: 500 })
     }
 }

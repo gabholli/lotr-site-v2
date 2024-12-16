@@ -13,7 +13,7 @@ export default function RootLayout({
         <link rel="shortcut icon" type="image/x-icon" href="/book.ico" />
       </head>
       <body
-        className="font-garamond bg-trees bg-cover bg-center grid grid-rows-[1fr_75px] min-h-svh"
+        className="font-serif bg-trees bg-cover bg-center grid grid-rows-[1fr_75px] min-h-svh"
       >
         {children}
         <Footer />

@@ -11,8 +11,7 @@ export async function GET(req: NextRequest) {
     try {
         const response = await axios.get(`https://the-one-api.dev/v2/book/${id}/chapter`, {
             headers: {
-                'x-api-key': process.env.VITE_SOME_KEY,
-                'X-api-host': 'api.thedogapi.com',
+                Authorization: `Bearer ${process.env.VITE_SOME_KEY}`
             },
         });
 

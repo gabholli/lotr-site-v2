@@ -18,7 +18,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center gap-y-10
         text-xl lg:text-3xl xl:text-3xl">
           <Link className="hover:underline" href="books">Books</Link>
-          <Link className="hover:underline" href="">Movies</Link>
+          <Link className="hover:underline" href="movies">Movies</Link>
           <Link className="hover:underline" href="">Characters</Link>
         </div>
       </div>

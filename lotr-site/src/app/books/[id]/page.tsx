@@ -66,7 +66,7 @@ export default function BookChapters() {
                 Back to book list:
             </Link>
             <section className="bg-white m-2 rounded-3xl p-6 md:p-12 flex flex-col gap-y-8">
-                <h1 className="text-xl lg:text-3xl xl:text-2xl underline text-center">This book's chapters:</h1>
+                <h1 className="text-xl lg:text-3xl xl:text-2xl underline text-center">This book&apos;s chapters:</h1>
                 <div className="flex flex-col justify-center items-center text-sm lg:text-2xl xl:text-xl
                     gap-y-4">
                     {chaptersList}

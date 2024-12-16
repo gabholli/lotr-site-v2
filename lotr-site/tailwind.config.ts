@@ -10,7 +10,10 @@ export default {
     extend: {
       backgroundImage: {
         "trees": "url('/tree-bg.jpg')"
-      }
+      },
+      fontFamily: {
+        garamond: ["Garamond", "serif"]
+      },
     },
   },
   plugins: [],

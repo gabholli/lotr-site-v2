@@ -7,12 +7,12 @@ export default function Footer() {
         gap-x-10 fixed bottom-0 left-0 right-0 h-20'>
             <Link
                 href='/'
-                className='text-xl lg:text-3xl'>
+                className='text-xl lg:text-2xl'>
                 Home
             </Link>
             <Link
                 href='/credits'
-                className='text-xl lg:text-3xl'>
+                className='text-xl lg:text-2xl'>
                 Credits
             </Link>
         </div>

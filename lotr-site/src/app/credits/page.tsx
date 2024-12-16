@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Credits() {
     return (
-        <section className='flex flex-col justify-center items-center gap-y-10'>
+        <section className='flex flex-col justify-center items-center gap-y-10 m-2'>
             <div className='flex flex-col justify-center items-center gap-y-10 bg-white
                 p-6 md:p-12 rounded-3xl'>
                 <h2 className='text-3xl lg:text-5xl xl:text-7xl'>Credits</h2>

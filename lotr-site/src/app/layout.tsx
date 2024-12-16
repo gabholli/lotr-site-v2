@@ -12,7 +12,7 @@ export default function RootLayout({
         <title>LOTR Site</title>
       </head>
       <body
-        className="bg-trees bg-cover b grid grid-rows-[1fr_75px] min-h-svh"
+        className="bg-trees bg-cover bg-center grid grid-rows-[1fr_75px] min-h-svh"
       >
         {children}
         <Footer />

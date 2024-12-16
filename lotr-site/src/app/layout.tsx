@@ -10,6 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>LOTR Site</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/book.ico" />
       </head>
       <body
         className="bg-trees bg-cover bg-center grid grid-rows-[1fr_75px] min-h-svh"

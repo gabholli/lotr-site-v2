@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Footer() {
     return (
-        <div className='flex justify-center items-center border-t-4 border-black
+        <div className='bg-white flex justify-center items-center border-t-4 border-black
         gap-x-6'>
             <Link
                 href='/'

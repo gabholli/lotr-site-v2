@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "trees": "url('/tree-bg.jpg')"
+      }
     },
   },
   plugins: [],

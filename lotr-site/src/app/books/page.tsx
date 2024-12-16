@@ -72,7 +72,7 @@ export default function BookList() {
     return (
         <main className="flex flex-col justify-center items-center
       gap-y-16">
-            <div className='flex flex-col justify-center items-center gap-y-10 bg-white
+            <div className='flex flex-col justify-center items-center gap-y-8 lg:gap-y-10 bg-white
                 p-6 md:p-12 m-2 rounded-3xl'>
                 <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find chapters in one of the following:</h1>
                 <div className="flex flex-col justify-center items-center gap-y-10

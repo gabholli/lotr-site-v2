@@ -61,7 +61,7 @@ export default function BookChapters() {
         <main className="flex flex-col justify-center items-center">
             <Link
                 href="/books"
-                className="bg-white p-2 rounded-2xl text-xl my-4 underline"
+                className="bg-white p-2 rounded-2xl text-xl my-4 hover:underline"
             >
                 Back to book list:
             </Link>

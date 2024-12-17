@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { MovieInfoTypes } from "@/app/types/types"
 
-export default function BookChapters() {
+export default function MovieDetails() {
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)

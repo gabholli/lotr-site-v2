@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export async function GET() {
-    console.log(process.env.VITE_SOME_KEY)
     try {
         const response = await axios.get('https://the-one-api.dev/v2/movie', {
             headers: {

@@ -29,6 +29,15 @@ function MovieList() {
             })
     }, [])
 
+    const moviesListMap = movie?.map(m => {
+        return <Link
+            className="hover:underline"
+            href={`/movies/${m._id}`}
+            key={m._id}
+        >{m.name}
+        </Link>
+    })
+
     if (loading) {
         return (
             <div className="bg-trees2 bg-cover bg-center flex justify-center items-center">
@@ -65,10 +74,11 @@ function MovieList() {
       gap-y-16">
             <div className='flex flex-col justify-center items-center gap-y-8 lg:gap-y-10 bg-white
                 p-6 md:p-12 m-2 rounded-3xl'>
-                <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find information for one of the following movies:</h1>
+                <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find information for one of the following:</h1>
                 <div className="flex flex-col justify-center items-center gap-y-10
         text-xl lg:text-3xl xl:text-3xl">
-                    {movie.length > 0 && movie[6] && (
+                    {moviesListMap}
+                    {/* {movie.length > 0 && movie[6] && (
                         <Link
                             className='hover:underline'
                             href={`/movies/${movie[6]._id}`}
@@ -88,7 +98,7 @@ function MovieList() {
                             href={`/movies/${movie[7]._id}`}
                         >
                             {movie[7].name}
-                        </Link>)}
+                        </Link>)} */}
                 </div>
             </div>
         </main>

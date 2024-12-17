@@ -9,7 +9,7 @@ import Link from "next/link"
 export default function Home() {
 
   return (
-    <main className="flex flex-col justify-center items-center
+    <main className="bg-trees bg-cover bg-center flex flex-col justify-center items-center
       gap-y-16">
       <h1 className="bg-white p-2 rounded-2xl text-xl lg:text-5xl xl:text-2xl">Lord of the Rings Info</h1>
 

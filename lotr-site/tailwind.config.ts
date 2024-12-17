@@ -9,7 +9,9 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "trees": "url('/tree-bg.jpg')"
+        "trees": "url('/tree-bg.jpg')",
+        "trees2": "url('/tree2.jpg')",
+        "trees3": "url('/tree3.jpg')"
       },
       fontFamily: {
         garamond: ["Garamond", "serif"]

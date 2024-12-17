@@ -40,7 +40,7 @@ export default function BookList() {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center">
+            <div className="bg-trees2 bg-cover bg-center flex justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
                         fill="white"
@@ -60,7 +60,7 @@ export default function BookList() {
 
     if (error) {
         return (
-            <div className="flex flex-col justify-center items-center">
+            <div className="bg-trees2 bg-cover bg-center flex flex-col justify-center items-center">
                 <h1 className="text-white text-3xl mb-8 text-center mt-8">There was an error loading this page...</h1>
                 <Link href="/" passHref>
                     <div className="bg-white px-4 py-2 rounded-xl text-xl hover:underline">Return to home</div>
@@ -71,7 +71,7 @@ export default function BookList() {
 
 
     return (
-        <main className="flex flex-col justify-center items-center
+        <main className="bg-trees2 bg-cover bg-center flex flex-col justify-center items-center
       gap-y-16">
             <div className='flex flex-col justify-center items-center gap-y-8 lg:gap-y-10 bg-white
                 p-6 md:p-12 m-2 rounded-3xl'>

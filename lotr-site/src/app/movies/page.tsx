@@ -75,14 +75,14 @@ function MovieList() {
                         >
                             {movie[6].name}
                         </Link>)}
-                    {movie.length > 1 && movie[5] && (
+                    {movie.length > 0 && movie[5] && (
                         <Link
                             className='hover:underline'
                             href={`/movies/${movie[5]._id}`}
                         >
                             {movie[5].name}
                         </Link>)}
-                    {movie.length > 2 && movie[7] && (
+                    {movie.length > 0 && movie[7] && (
                         <Link
                             className='hover:underline'
                             href={`/movies/${movie[7]._id}`}

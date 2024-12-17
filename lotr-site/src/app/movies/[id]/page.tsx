@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { Chapter } from "@/app/types/types"
+import { MovieInfoTypes } from "@/app/types/types"
 
 export default function BookChapters() {
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [quote, setQoute] = useState([])
+    const [movieInfo, setMovieInfo] = useState<MovieInfoTypes[]>([])
 
     useEffect(() => {
         if (!id) return
@@ -21,6 +21,7 @@ export default function BookChapters() {
             .get(`/api/movie/${id}`)
             .then((response) => {
                 console.log(response.data.docs)
+                setMovieInfo(response.data.docs)
             })
             .catch((e) => {
                 setError(e)
@@ -29,6 +30,22 @@ export default function BookChapters() {
                 setLoading(false)
             })
     }, [id])
+
+    const movieInfoMap = movieInfo?.map(movie => {
+        return (
+            <div key={movie._id}
+                className="flex flex-col justify-center items-center text-sm lg:text-2xl xl:text-xl
+                    gap-y-4"
+            >
+                <p>Name: {movie.name}</p>
+                <p>Academy Award nominations: {movie.academyAwardNominations}</p>
+                <p>Academy Award wins: {movie.academyAwardWins}</p>
+                <p>Box office revenues(in millions): {movie.boxOfficeRevenueInMillions}</p>
+                <p>Rotten Tomatoes score: {movie.rottenTomatoesScore}</p>
+                <p>Total run time(minutes): {movie.runtimeInMinutes}</p>
+            </div>
+        )
+    })
 
     if (loading) {
         return (
@@ -61,11 +78,8 @@ export default function BookChapters() {
                 Back to movie list:
             </Link>
             <section className="bg-white m-2 rounded-3xl p-6 md:p-12 flex flex-col gap-y-6 lg:gap-y-8">
-                <h1 className="text-xl lg:text-3xl xl:text-2xl underline text-center">This book&apos;s chapters:</h1>
-                <div className="flex flex-col justify-center items-center text-sm lg:text-2xl xl:text-xl
-                    gap-y-4">
-                    Test
-                </div>
+                <h1 className="text-xl lg:text-3xl xl:text-2xl underline text-center">Information about this movie:</h1>
+                {movieInfoMap}
             </section>
         </main>
     )

@@ -68,9 +68,27 @@ function MovieList() {
                 <h1 className="text-xl lg:text-5xl xl:text-4xl underline text-center">Find information for one of the following movies:</h1>
                 <div className="flex flex-col justify-center items-center gap-y-10
         text-xl lg:text-3xl xl:text-3xl">
-                    <p>{movie[6]?.name}</p>
-                    <p>{movie[5]?.name}</p>
-                    <p>{movie[7]?.name}</p>
+                    {movie.length > 0 && movie[6] && (
+                        <Link
+                            className='hover:underline'
+                            href={`/movies/${movie[6]._id}`}
+                        >
+                            {movie[6].name}
+                        </Link>)}
+                    {movie.length > 1 && movie[5] && (
+                        <Link
+                            className='hover:underline'
+                            href={`/movies/${movie[5]._id}`}
+                        >
+                            {movie[5].name}
+                        </Link>)}
+                    {movie.length > 2 && movie[7] && (
+                        <Link
+                            className='hover:underline'
+                            href={`/movies/${movie[7]._id}`}
+                        >
+                            {movie[7].name}
+                        </Link>)}
                 </div>
             </div>
         </main>

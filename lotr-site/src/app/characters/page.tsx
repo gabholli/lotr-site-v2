@@ -111,7 +111,12 @@ export default function CharactersList() {
                 </form>
                 {characters[0] ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
                     {characters.map((character) => (
-                        <div key={character._id}>{character.name}</div>
+                        <Link key={character._id}
+                            className="hover:underline"
+                            href={`/characters/${character._id}`}
+                        >
+                            {character.name}
+                        </Link>
                     ))}
                 </div>) : <h1 className="text-center text-2xl">No data currently...</h1>}
                 <div className="flex justify-between w-full">

@@ -20,7 +20,7 @@ export default function CharactersList() {
             const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
             setCharacters(response.data.data);
             setTotalPages(response.data.totalPages);
-        } catch (e) {
+        } catch (e: any) {
             setError(e.message);
         } finally {
             setLoading(false);
@@ -43,13 +43,13 @@ export default function CharactersList() {
         }
     };
 
-    function handleSubmit(event: { preventDefault: () => void; target: { value: SetStateAction<string>; }; }) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
         setQuery(search)
         setCurrentPage(1)
     }
 
-    function handleChange(event: any) {
+    function handleChange(event: React.FormEvent<HTMLFormElement>) {
         setSearch(event.target.value)
     }
 

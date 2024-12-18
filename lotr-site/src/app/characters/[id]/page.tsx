@@ -35,7 +35,7 @@ export default function CharacterDetails() {
     const characterDetails = character?.map(c => {
         return (
             <div
-                className="flex flex-col gap-y-4"
+                className="flex flex-col gap-y-4 justify-center items-center"
                 key={c._id}>
                 {c.name && <p>Name: {c.name}</p>}
                 {c.race && <p>Race: {c.race}</p>}

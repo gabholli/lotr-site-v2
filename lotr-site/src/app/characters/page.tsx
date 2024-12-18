@@ -93,7 +93,7 @@ export default function CharactersList() {
             <div className='flex flex-col justify-center items-center gap-y-8 lg:gap-y-10 bg-white p-6 md:p-12 m-2 rounded-3xl'>
                 <h1 className="flex flex-col justify-center items-center text-xl lg:text-5xl xl:text-4xl underline text-center">Select a character:</h1>
                 <form
-                    className="flex"
+                    className="flex flex-col justify-center items-center gap-y-4"
                     onSubmit={handleSubmit}>
                     <input
                         type="text"

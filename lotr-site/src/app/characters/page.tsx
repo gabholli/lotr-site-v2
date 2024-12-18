@@ -20,8 +20,12 @@ export default function CharactersList() {
             const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
             setCharacters(response.data.data);
             setTotalPages(response.data.totalPages);
-        } catch (e: any) {
-            setError(e.message);
+        } catch (e) {
+            if (e instanceof Error) {
+                setError(e.message);
+            } else {
+                setError("An unknown error occurred");
+            }
         } finally {
             setLoading(false);
         }
@@ -49,7 +53,7 @@ export default function CharactersList() {
         setCurrentPage(1)
     }
 
-    function handleChange(event: React.FormEvent<HTMLFormElement>) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
     }
 

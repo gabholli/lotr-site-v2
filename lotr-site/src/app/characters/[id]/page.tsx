@@ -39,7 +39,7 @@ export default function CharacterDetails() {
                 key={c._id}>
                 {c.name && <p>Name: {c.name}</p>}
                 {c.race && <p>Race: {c.race}</p>}
-                {c.birth && <p>Birthdata: {c.birth}</p>}
+                {c.birth && <p>Birthdate: {c.birth}</p>}
                 {c.gender && <p>Gender: {c.gender}</p>}
                 {c.death && <p>Time of death: {c.death}</p>}
                 {c.hair && <p>Hair color: {c.hair}</p>}

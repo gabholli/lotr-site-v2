@@ -31,7 +31,7 @@ function MovieList() {
 
     const moviesListMap = movie?.map(m => {
         return <Link
-            className="hover:underline"
+            className="hover:underline text-center"
             href={`/movies/${m._id}`}
             key={m._id}
         >{m.name}

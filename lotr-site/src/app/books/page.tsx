@@ -31,7 +31,7 @@ export default function BookList() {
     // console.log(book.map(b => b.name))
     const books = book?.map(b => {
         return <Link
-            className="hover:underline"
+            className="hover:underline text-center"
             href={`/books/${b._id}`}
             key={b._id}
         >{b.name}

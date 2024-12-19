@@ -35,7 +35,7 @@ export default function MovieDetails() {
         return (
             <div key={movie._id}
                 className="flex flex-col justify-center items-center text-sm lg:text-2xl xl:text-xl
-                    gap-y-4"
+                    gap-y-4 text-center"
             >
                 <p>Name: {movie.name}</p>
                 <p>Academy Award nominations: {movie.academyAwardNominations}</p>

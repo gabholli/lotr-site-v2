@@ -112,7 +112,7 @@ export default function CharactersList() {
                 {characters[0] ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
                     {characters.map((character) => (
                         <Link key={character._id}
-                            className="hover:underline"
+                            className="hover:underline text-center"
                             href={`/characters/${character._id}`}
                         >
                             {character.name}

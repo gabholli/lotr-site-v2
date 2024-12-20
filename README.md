@@ -17,4 +17,3 @@ Gabe Hollifield
 ## Data Attribution
 
 This project uses data provided by the oneAPI (https://the-one-api.dev/).
-License: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).

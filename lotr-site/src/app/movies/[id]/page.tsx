@@ -34,7 +34,7 @@ export default function MovieDetails() {
     const movieInfoMap = movieInfo?.map(movie => {
         return (
             <div key={movie._id}
-                className="flex flex-col justify-center items-center text-sm lg:text-2xl xl:text-xl
+                className="flex flex-col justify-center items-center lg:text-2xl xl:text-xl
                     gap-y-4 text-center"
             >
                 <p>Name: {movie.name}</p>

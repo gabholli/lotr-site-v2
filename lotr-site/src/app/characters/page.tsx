@@ -97,6 +97,7 @@ export default function CharactersList() {
                     onSubmit={handleSubmit}
                     name="CharactersList"
                     data-netlify="true"
+                    method="POST"
                 >
                     <input
                         type="text"

@@ -94,9 +94,7 @@ export default function CharactersList() {
                 <h1 className="flex flex-col justify-center items-center text-xl lg:text-5xl xl:text-4xl underline text-center">Select a character:</h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    onSubmit={handleSubmit}
-                    data-netlify="true"
-                >
+                    onSubmit={handleSubmit}>
                     <input
                         type="text"
                         placeholder="Search characters..."

@@ -94,7 +94,10 @@ export default function CharactersList() {
                 <h1 className="flex flex-col justify-center items-center text-xl lg:text-5xl xl:text-4xl underline text-center">Select a character:</h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    onSubmit={handleSubmit}>
+                    onSubmit={handleSubmit}
+                    name="CharactersList"
+                    data-netlify="true"
+                >
                     <input
                         type="text"
                         placeholder="Search characters..."
@@ -109,7 +112,7 @@ export default function CharactersList() {
                         Search
                     </button>
                 </form>
-                {characters[0] ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
+                {characters.length ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
                     {characters.map((character) => (
                         <Link key={character._id}
                             className="hover:underline text-center"

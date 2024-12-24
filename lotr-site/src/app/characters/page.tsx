@@ -95,7 +95,9 @@ export default function CharactersList() {
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
-                    data-netlify="true">
+                    data-netlify="true"
+                    name="find">
+                    <input type="hidden" name="form-name" value="find" />
                     <input
                         type="text"
                         placeholder="Search characters..."

@@ -4,4 +4,4 @@
   command = "npm run build"   # Your build command, can be "yarn build" too
 
 [[plugins]]
-package = "@opennextjs/netlify"
+package = "@netlify/plugin-nextjs"

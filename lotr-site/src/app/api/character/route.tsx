@@ -5,9 +5,9 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
-    const query = searchParams.get('query') || ''; // Get search query
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
+    const query = searchParams.get('query') || '' // Get search query
+    const startIndex = (page - 1) * pageSize
+    const endIndex = startIndex + pageSize
 
     try {
         // Fetch all characters from external API
@@ -15,15 +15,15 @@ export async function GET(request: NextRequest) {
             headers: {
                 Authorization: `Bearer ${process.env.VITE_SOME_KEY}`,
             },
-        })
+        });
 
         // Ensure the API response structure is typed
         type Character = {
-            _id: string;
-            name: string;
-        }
+            _id: string
+            name: string
+        };
 
-        const characters: Character[] = response.data.docs
+        const characters: Character[] = response.data.docs;
 
         // Filter based on query (case-insensitive)
         const filteredCharacters = characters.filter((character) =>

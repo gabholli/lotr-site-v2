@@ -49,6 +49,7 @@ export default function CharactersList() {
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
+        console.log("Form submitted"); // Add this line for debugging
         setQuery(search)
         setCurrentPage(1)
     }

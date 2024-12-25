@@ -47,11 +47,11 @@ export default function CharactersList() {
         }
     };
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        setQuery(search)
-        setCurrentPage(1)
-    }
+    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    //     event.preventDefault()
+    //     setQuery(search)
+    //     setCurrentPage(1)
+    // }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)

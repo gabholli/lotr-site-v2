@@ -14,7 +14,7 @@ export default function CharactersList() {
     const [query, setQuery] = useState('')
     const [search, setSearch] = useState<string>('')
 
-    const fetchCharacters = async (page: number, query: string) => {
+    async function fetchCharacters(page: number, query: string) {
         setLoading(true)
         try {
             console.log(`Fetching characters: page=${page}, query=${query}`) // Debugging
@@ -42,13 +42,13 @@ export default function CharactersList() {
         fetchCharacters(currentPage, query)
     }, [currentPage, query])
 
-    const handleNextPage = () => {
+    function handleNextPage() {
         if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1)
         }
     }
 
-    const handlePreviousPage = () => {
+    function handlePreviousPage() {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1)
         }
@@ -62,9 +62,19 @@ export default function CharactersList() {
         setCurrentPage(1)
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
     }
+
+    const charactersMap = characters?.map((character) => (
+        <Link
+            key={character._id}
+            className="hover:underline text-center"
+            href={`/characters/${character._id}`}
+        >
+            {character.name}
+        </Link>
+    ))
 
     if (loading) {
         return (
@@ -142,15 +152,7 @@ export default function CharactersList() {
                 </form>
                 {characters.length > 0 ? (
                     <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
-                        {characters?.map((character) => (
-                            <Link
-                                key={character._id}
-                                className="hover:underline text-center"
-                                href={`/characters/${character._id}`}
-                            >
-                                {character.name}
-                            </Link>
-                        ))}
+                        {charactersMap}
                     </div>
                 ) : (
                     <h1 className="text-center text-2xl">

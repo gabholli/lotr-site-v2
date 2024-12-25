@@ -1,18 +1,18 @@
 "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Character } from "../types/types";
+import axios from "axios"
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { Character } from "../types/types"
 
 export default function CharactersList() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [characters, setCharacters] = useState<Character[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [query, setQuery] = useState('');
-    const [search, setSearch] = useState<string>('');
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const [characters, setCharacters] = useState<Character[]>([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(0)
+    const [query, setQuery] = useState('')
+    const [search, setSearch] = useState<string>('')
 
     const fetchCharacters = async (page: number, query: string) => {
         setLoading(true);
@@ -24,11 +24,11 @@ export default function CharactersList() {
             setTotalPages(response.data.totalPages);
         } catch (e) {
             if (e instanceof Error) {
-                setError(e.message);
-                console.error('Error:', e.message); // Debugging line
+                setError(e.message)
+                console.error('Error:', e.message) // Debugging line
             } else {
-                setError("An unknown error occurred");
-                console.error('Unknown error'); // Debugging line
+                setError("An unknown error occurred")
+                console.error('Unknown error') // Debugging line
             }
         } finally {
             setLoading(false);
@@ -36,31 +36,31 @@ export default function CharactersList() {
     };
 
     useEffect(() => {
-        fetchCharacters(currentPage, query);
+        fetchCharacters(currentPage, query)
     }, [currentPage, query]);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            setCurrentPage(currentPage + 1)
         }
     };
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            setCurrentPage(currentPage - 1)
         }
     };
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        console.log("Form submitted"); // Debugging line
-        console.log(`Search query: ${search}`); // Debugging line
-        setQuery(search);
-        setCurrentPage(1);
+        console.log("Form submitted") // Debugging line
+        console.log(`Search query: ${search}`) // Debugging line
+        setQuery(search)
+        setCurrentPage(1)
     }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setSearch(event.target.value);
+        setSearch(event.target.value)
     }
 
     if (loading) {

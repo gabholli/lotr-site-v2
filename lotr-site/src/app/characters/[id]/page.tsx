@@ -22,7 +22,6 @@ export default function CharacterDetails() {
             .then((response) => {
                 console.log(response.data.docs)
                 setCharacter(response.data.docs)
-                console.log(character)
             })
             .catch((e) => {
                 setError(e)
@@ -30,7 +29,7 @@ export default function CharacterDetails() {
             .finally(() => {
                 setLoading(false)
             })
-    }, [id, character])
+    }, [id])
 
     const characterDetails = character?.map(c => {
         return (

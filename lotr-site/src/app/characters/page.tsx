@@ -51,7 +51,7 @@ export default function CharactersList() {
         }
     };
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    function handleSubmit() {
         // event.preventDefault()
         console.log("Form submitted") // Debugging line
         console.log(`Search query: ${search}`) // Debugging line

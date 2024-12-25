@@ -11,8 +11,8 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
-    const [query, setQuery] = useState("")
-    const [search, setSearch] = useState("")
+    const [query, setQuery] = useState('')
+    const [search, setSearch] = useState<string>('')
 
     const fetchCharacters = async (page: number, query: string) => {
         setLoading(true)
@@ -54,29 +54,12 @@ export default function CharactersList() {
         }
     }
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-
-        // Set the query and reset the page to 1
+        console.log("Form submitted") // Debugging line
+        console.log(`Search query: ${search}`) // Debugging line
         setQuery(search)
         setCurrentPage(1)
-
-        // Send form data to Netlify
-        const form = event.target as HTMLFormElement
-        const formData = new FormData(form)
-
-        try {
-            await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(
-                    Array.from(formData.entries()) as [string, string][]
-                ),
-            })
-            console.log("Form sent to Netlify")
-        } catch (error) {
-            console.log("Form submission error", error)
-        }
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -134,14 +117,14 @@ export default function CharactersList() {
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
                     name="CharactersList"
-                    method="POST"
-                    data-netlify="true"
+                // method="POST"
+                // data-netlify="true"
                 >
-                    <input
+                    {/* <input
                         type="hidden"
                         name="form-name"
                         value="CharactersList"
-                    />
+                    /> */}
                     <input
                         type="text"
                         placeholder="Search characters..."

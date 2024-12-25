@@ -11,13 +11,13 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [query, setQuery] = useState('');
+    // const [query, setQuery] = useState('');
     const [search, setSearch] = useState<string>('');
 
-    const fetchCharacters = async (page: number, query: string) => {
+    const fetchCharacters = async (page: number, search: string) => {
         setLoading(true);
         try {
-            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
+            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${search}`);
             setCharacters(response.data.data);
             setTotalPages(response.data.totalPages);
         } catch (e) {
@@ -32,8 +32,8 @@ export default function CharactersList() {
     };
 
     useEffect(() => {
-        fetchCharacters(currentPage, query);
-    }, [currentPage, query]);
+        fetchCharacters(currentPage, search);
+    }, [currentPage, search]);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -104,7 +104,7 @@ export default function CharactersList() {
                         type="text"
                         placeholder="Search characters..."
                         value={search}
-                        name="query"
+                        name="search"
                         onChange={handleChange}
                         className="px-4 py-2 border border-black rounded"
                     />

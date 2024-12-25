@@ -30,7 +30,7 @@ export default function CharacterDetails() {
             .finally(() => {
                 setLoading(false)
             })
-    }, [id, character])
+    }, [id])
 
     const characterDetails = character?.map(c => {
         return (

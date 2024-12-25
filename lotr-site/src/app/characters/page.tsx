@@ -12,7 +12,7 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
-    const [query, setQuery] = useState('')
+    // const [query, setQuery] = useState('')
     const [search, setSearch] = useState<string>('')
 
     const debouncedSearch = useDebounce(search, 1000)
@@ -57,13 +57,13 @@ export default function CharactersList() {
         }
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        console.log("Form submitted") // Debugging line
-        console.log(`Search query: ${search}`) // Debugging line
-        setQuery(search)
-        setCurrentPage(1)
-    }
+    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    //     event.preventDefault()
+    //     console.log("Form submitted") // Debugging line
+    //     console.log(`Search query: ${search}`) // Debugging line
+    //     setQuery(search)
+    //     setCurrentPage(1)
+    // }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
@@ -128,7 +128,7 @@ export default function CharactersList() {
                 </h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                     name="CharactersList"
                 // method="POST"
                 // data-netlify="true"

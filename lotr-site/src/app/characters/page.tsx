@@ -96,8 +96,8 @@ export default function CharactersList() {
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
                     name="CharactersList"
-                    data-netlify="true"
-                    method="POST"
+                // data-netlify="true"
+                // method="POST"
                 >
                     <input
                         type="text"
@@ -107,11 +107,11 @@ export default function CharactersList() {
                         onChange={handleChange}
                         className="px-4 py-2 border border-black rounded"
                     />
-                    {/* <button
+                    <button
                         type="submit"
                         className="px-4 py-2 bg-blue-500 text-white rounded w-full">
                         Search
-                    </button> */}
+                    </button>
                 </form>
                 {characters.length ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
                     {characters.map((character) => (

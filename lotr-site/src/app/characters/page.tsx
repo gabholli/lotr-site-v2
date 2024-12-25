@@ -17,14 +17,18 @@ export default function CharactersList() {
     const fetchCharacters = async (page: number, query: string) => {
         setLoading(true);
         try {
+            console.log(`Fetching characters: page=${page}, query=${query}`); // Debugging line
             const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
+            console.log('Response:', response); // Debugging line
             setCharacters(response.data.data);
             setTotalPages(response.data.totalPages);
         } catch (e) {
             if (e instanceof Error) {
                 setError(e.message);
+                console.error('Error:', e.message); // Debugging line
             } else {
                 setError("An unknown error occurred");
+                console.error('Unknown error'); // Debugging line
             }
         } finally {
             setLoading(false);
@@ -48,14 +52,15 @@ export default function CharactersList() {
     };
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        console.log("Form submitted"); // Add this line for debugging
-        setQuery(search)
-        setCurrentPage(1)
+        event.preventDefault();
+        console.log("Form submitted"); // Debugging line
+        console.log(`Search query: ${search}`); // Debugging line
+        setQuery(search);
+        setCurrentPage(1);
     }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setSearch(event.target.value)
+        setSearch(event.target.value);
     }
 
     if (loading) {
@@ -97,8 +102,6 @@ export default function CharactersList() {
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
                     name="CharactersList"
-                // data-netlify="true"
-                // method="POST"
                 >
                     <input
                         type="text"
@@ -114,16 +117,20 @@ export default function CharactersList() {
                         Search
                     </button>
                 </form>
-                {characters.length ? (<div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
-                    {characters.map((character) => (
-                        <Link key={character._id}
-                            className="hover:underline text-center"
-                            href={`/characters/${character._id}`}
-                        >
-                            {character.name}
-                        </Link>
-                    ))}
-                </div>) : <h1 className="text-center text-2xl">No data currently...</h1>}
+                {characters.length ? (
+                    <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
+                        {characters.map((character) => (
+                            <Link key={character._id}
+                                className="hover:underline text-center"
+                                href={`/characters/${character._id}`}
+                            >
+                                {character.name}
+                            </Link>
+                        ))}
+                    </div>
+                ) : (
+                    <h1 className="text-center text-2xl">No data currently...</h1>
+                )}
                 <div className="flex justify-between w-full">
                     <button
                         onClick={handlePreviousPage}

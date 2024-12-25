@@ -64,7 +64,7 @@ export default function CharactersList() {
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData as any).toString(),
+            body: new URLSearchParams(Array.from(formData.entries()) as [string, string][])
         })
             .then(() => console.log("Form sent to Netlify"))
             .catch((error) => console.log("Form submission error", error))

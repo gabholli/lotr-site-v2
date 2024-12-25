@@ -1,53 +1,57 @@
 "use client";
 
-import axios from "axios"
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import { Character } from "../types/types"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Character } from "../types/types";
 
 export default function CharactersList() {
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
-    const [characters, setCharacters] = useState<Character[]>([])
-    const [currentPage, setCurrentPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(0)
-    const [query, setQuery] = useState('')
-    const [search, setSearch] = useState<string>('')
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [characters, setCharacters] = useState<Character[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [query, setQuery] = useState('');
+    const [search, setSearch] = useState<string>('');
 
     const fetchCharacters = async (page: number, query: string) => {
-        setLoading(true);
+        setLoading(true)
         try {
             console.log(`Fetching characters: page=${page}, query=${query}`); // Debugging line
-            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
+            const response = await axios.post('/api/character', {
+                page,
+                pageSize: 10,
+                query
+            });
             console.log('Response:', response); // Debugging line
-            setCharacters(response.data.data);
-            setTotalPages(response.data.totalPages);
+            setCharacters(response.data.data)
+            setTotalPages(response.data.totalPages)
         } catch (e) {
             if (e instanceof Error) {
-                setError(e.message)
-                console.error('Error:', e.message) // Debugging line
+                setError(e.message);
+                console.error('Error:', e.message); // Debugging line
             } else {
                 setError("An unknown error occurred")
                 console.error('Unknown error') // Debugging line
             }
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
     };
 
     useEffect(() => {
-        fetchCharacters(currentPage, query)
+        fetchCharacters(currentPage, query);
     }, [currentPage, query]);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1)
+            setCurrentPage(currentPage + 1);
         }
     };
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1)
+            setCurrentPage(currentPage - 1);
         }
     };
 
@@ -91,7 +95,7 @@ export default function CharactersList() {
                     <div className="bg-white px-4 py-2 rounded-xl text-xl hover:underline">Return to home</div>
                 </Link>
             </div>
-        );
+        )
     }
 
     return (
@@ -149,5 +153,5 @@ export default function CharactersList() {
                 </div>
             </div>
         </main>
-    );
+    )
 }

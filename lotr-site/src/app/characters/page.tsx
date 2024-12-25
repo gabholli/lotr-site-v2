@@ -4,6 +4,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Character } from "../types/types"
+import { useDebounce } from "../hooks/useDebounce"
 
 export default function CharactersList() {
     const [loading, setLoading] = useState(false)
@@ -11,15 +12,17 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
-    const [query, setQuery] = useState('')
+    // const [query, setQuery] = useState('')
     const [search, setSearch] = useState<string>('')
 
-    async function fetchCharacters(page: number, query: string) {
+    const debouncedSearch = useDebounce(search, 500)
+
+    async function fetchCharacters(page: number, search: string) {
         setLoading(true)
         try {
-            console.log(`Fetching characters: page=${page}, query=${query}`) // Debugging
+            console.log(`Fetching characters: page=${page}, query=${search}`) // Debugging
             const response = await axios.get(
-                `/api/character?page=${page}&pageSize=10&query=${query}`
+                `/api/character?page=${page}&pageSize=10&query=${search}`
             )
             console.log("Response:", response) // Debugging
             setCharacters(response.data.data)
@@ -39,8 +42,8 @@ export default function CharactersList() {
 
     // Fetch characters when the page or query changes
     useEffect(() => {
-        fetchCharacters(currentPage, query)
-    }, [currentPage, query])
+        fetchCharacters(currentPage, debouncedSearch)
+    }, [currentPage, debouncedSearch])
 
     function handleNextPage() {
         if (currentPage < totalPages) {
@@ -54,13 +57,13 @@ export default function CharactersList() {
         }
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        console.log("Form submitted") // Debugging line
-        console.log(`Search query: ${search}`) // Debugging line
-        setQuery(search)
-        setCurrentPage(1)
-    }
+    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    //     event.preventDefault()
+    //     console.log("Form submitted") // Debugging line
+    //     console.log(`Search query: ${search}`) // Debugging line
+    //     setQuery(search)
+    //     setCurrentPage(1)
+    // }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
@@ -125,16 +128,16 @@ export default function CharactersList() {
                 </h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                     name="CharactersList"
-                // method="POST"
-                // data-netlify="true"
+                    method="POST"
+                    data-netlify="true"
                 >
-                    {/* <input
+                    <input
                         type="hidden"
                         name="form-name"
                         value="CharactersList"
-                    /> */}
+                    />
                     <input
                         type="text"
                         placeholder="Search characters..."
@@ -143,12 +146,12 @@ export default function CharactersList() {
                         onChange={handleChange}
                         className="px-4 py-2 border border-black rounded"
                     />
-                    <button
+                    {/* <button
                         type="submit"
                         className="px-4 py-2 bg-blue-500 text-white rounded w-full"
                     >
                         Search
-                    </button>
+                    </button> */}
                 </form>
                 {characters.length > 0 ? (
                     <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">

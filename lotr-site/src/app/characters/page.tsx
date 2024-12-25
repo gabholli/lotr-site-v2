@@ -1,35 +1,31 @@
-"use client";
+"use client"
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Character } from "../types/types";
+import axios from "axios"
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { Character } from "../types/types"
 
 export default function CharactersList() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [characters, setCharacters] = useState<Character[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [query, setQuery] = useState('');
-    const [search, setSearch] = useState<string>('');
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const [characters, setCharacters] = useState<Character[]>([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(0)
+    const [query, setQuery] = useState('')
+    const [search, setSearch] = useState<string>('')
 
     const fetchCharacters = async (page: number, query: string) => {
         setLoading(true)
         try {
-            console.log(`Fetching characters: page=${page}, query=${query}`); // Debugging line
-            const response = await axios.post('/api/character', {
-                page,
-                pageSize: 10,
-                query
-            });
-            console.log('Response:', response); // Debugging line
+            console.log(`Fetching characters: page=${page}, query=${query}`) // Debugging line
+            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`)
+            console.log('Response:', response) // Debugging line
             setCharacters(response.data.data)
             setTotalPages(response.data.totalPages)
         } catch (e) {
             if (e instanceof Error) {
-                setError(e.message);
-                console.error('Error:', e.message); // Debugging line
+                setError(e.message)
+                console.error('Error:', e.message) // Debugging line
             } else {
                 setError("An unknown error occurred")
                 console.error('Unknown error') // Debugging line
@@ -37,33 +33,44 @@ export default function CharactersList() {
         } finally {
             setLoading(false)
         }
-    };
+    }
 
     useEffect(() => {
-        fetchCharacters(currentPage, query);
-    }, [currentPage, query]);
+        fetchCharacters(currentPage, query)
+    }, [currentPage, query])
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            setCurrentPage(currentPage + 1)
         }
-    };
+    }
 
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            setCurrentPage(currentPage - 1)
         }
-    };
+    }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         console.log("Form submitted") // Debugging line
         console.log(`Search query: ${search}`) // Debugging line
-        setQuery(search)
+        setQuery(search) // Ensure that this updates the query state
         setCurrentPage(1)
+
+        // Send form data to Netlify for handling
+        const form = event.target as HTMLFormElement
+        const formData = new FormData(form)
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData as any).toString(),
+        })
+            .then(() => console.log("Form sent to Netlify"))
+            .catch((error) => console.log("Form submission error", error))
     }
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value)
     }
 
@@ -79,12 +86,12 @@ export default function CharactersList() {
                             dur="0.75s"
                             repeatCount="indefinite"
                             type="rotate"
-                            values="0 12 12;360 12 12"
+                            values="0 12 12360 12 12"
                         />
                     </path>
                 </svg>
             </div>
-        );
+        )
     }
 
     if (error) {
@@ -106,7 +113,10 @@ export default function CharactersList() {
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
                     name="CharactersList"
+                    method="POST"
+                    data-netlify="true"
                 >
+                    <input type="hidden" name="form-name" value="CharactersList" />
                     <input
                         type="text"
                         placeholder="Search characters..."

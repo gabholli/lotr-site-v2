@@ -141,7 +141,8 @@ export default function CharactersList() {
                     </button>
                 </form>
                 {characters.length > 0 ? (
-                    <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
+                    <div className="flex flex-col justify-center items-center 
+                        md:grid md:grid-cols-2 md:gap-x-6 gap-y-10 text-xl lg:text-3xl xl:text-3xl">
                         {characters?.map((character) => (
                             <Link
                                 key={character._id}

@@ -105,7 +105,7 @@ export default function CharactersList() {
                         value={search}
                         name="query"
                         onChange={handleChange}
-                        className="px-4 py-2 border rounded"
+                        className="px-4 py-2 border border-black rounded"
                     />
                     {/* <button
                         type="submit"

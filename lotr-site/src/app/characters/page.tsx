@@ -11,13 +11,13 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    // const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('');
     const [search, setSearch] = useState<string>('');
 
-    const fetchCharacters = async (page: number, search: string) => {
+    const fetchCharacters = async (page: number, query: string) => {
         setLoading(true);
         try {
-            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${search}`);
+            const response = await axios.get(`/api/character?page=${page}&pageSize=10&query=${query}`);
             setCharacters(response.data.data);
             setTotalPages(response.data.totalPages);
         } catch (e) {
@@ -32,8 +32,8 @@ export default function CharactersList() {
     };
 
     useEffect(() => {
-        fetchCharacters(currentPage, search);
-    }, [currentPage, search]);
+        fetchCharacters(currentPage, query);
+    }, [currentPage, query]);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -47,11 +47,11 @@ export default function CharactersList() {
         }
     };
 
-    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    //     event.preventDefault()
-    //     setQuery(search)
-    //     setCurrentPage(1)
-    // }
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setQuery(search)
+        setCurrentPage(1)
+    }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
@@ -94,17 +94,16 @@ export default function CharactersList() {
                 <h1 className="flex flex-col justify-center items-center text-xl lg:text-5xl xl:text-4xl underline text-center">Select a character:</h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    // onSubmit={handleSubmit}
+                    onSubmit={handleSubmit}
                     name="CharactersList"
-                    data-netlify="true"
-                    method="POST"
+                // data-netlify="true"
+                // method="POST"
                 >
-                    <input type="hidden" name="form-name" value="CharactersList" />
                     <input
                         type="text"
                         placeholder="Search characters..."
                         value={search}
-                        name="search"
+                        name="query"
                         onChange={handleChange}
                         className="px-4 py-2 border border-black rounded"
                     />

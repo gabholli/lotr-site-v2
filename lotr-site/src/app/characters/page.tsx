@@ -15,7 +15,7 @@ export default function CharactersList() {
     // const [query, setQuery] = useState('')
     const [search, setSearch] = useState<string>('')
 
-    const debouncedSearch = useDebounce(search, 500)
+    const debouncedSearch = useDebounce(search, 1000)
 
     async function fetchCharacters(page: number, search: string) {
         setLoading(true)

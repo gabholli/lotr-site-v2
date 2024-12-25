@@ -51,8 +51,8 @@ export default function CharactersList() {
         }
     };
 
-    function handleSubmit() {
-        // event.preventDefault()
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault()
         console.log("Form submitted") // Debugging line
         console.log(`Search query: ${search}`) // Debugging line
         setQuery(search)
@@ -102,10 +102,7 @@ export default function CharactersList() {
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
                     onSubmit={handleSubmit}
                     name="CharactersList"
-                    data-netlify="true"
-                    method="POST"
                 >
-                    <input type="hidden" name="form-name" value="CharactersList" />
                     <input
                         type="text"
                         placeholder="Search characters..."

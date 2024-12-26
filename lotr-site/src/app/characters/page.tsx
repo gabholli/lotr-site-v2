@@ -174,22 +174,24 @@ export default function CharactersList() {
                         Please enter a valid name...
                     </h1>
                 )}
-                <div className="flex justify-between w-full">
-                    <button
-                        onClick={handlePreviousPage}
-                        disabled={currentPage === 1}
-                        className="px-4 py-2 bg-blue-500 text-white rounded"
-                    >
-                        Previous
-                    </button>
-                    <button
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                        className="px-4 py-2 bg-blue-500 text-white rounded"
-                    >
-                        Next
-                    </button>
-                </div>
+                {filteredCharacters.length > 0 && (
+                    <div className="flex justify-between w-full">
+                        <button
+                            onClick={handlePreviousPage}
+                            disabled={currentPage === 1}
+                            className="px-4 py-2 bg-blue-500 text-white rounded"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            onClick={handleNextPage}
+                            disabled={currentPage === totalPages}
+                            className="px-4 py-2 bg-blue-500 text-white rounded"
+                        >
+                            Next
+                        </button>
+                    </div>
+                )}
             </div>
         </main>
     )

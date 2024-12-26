@@ -26,6 +26,7 @@ export default function CharactersList() {
             )
             console.log("Response:", response) // Debugging
             setCharacters(response.data.data)
+            console.log("Updated Characters:", response.data.data)
             setTotalPages(response.data.totalPages)
         } catch (e) {
             if (e instanceof Error) {

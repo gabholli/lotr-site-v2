@@ -12,7 +12,6 @@ export default function CharactersList() {
     const [characters, setCharacters] = useState<Character[]>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
-    // const [query, setQuery] = useState('')
     const [search, setSearch] = useState<string>('')
 
     const debouncedSearch = useDebounce(search, 1000)
@@ -39,11 +38,10 @@ export default function CharactersList() {
             setLoading(false)
         }
     }
-    console.log('Characters:', characters) // Debugging
-    console.log('Total Pages:', totalPages) // Debugging
 
     // Fetch characters when the page or query changes
     useEffect(() => {
+        console.log('Current Page:', currentPage, 'Debounced Search:', debouncedSearch) // Debugging
         fetchCharacters(currentPage, debouncedSearch)
     }, [currentPage, debouncedSearch])
 
@@ -58,14 +56,6 @@ export default function CharactersList() {
             setCurrentPage(currentPage - 1)
         }
     }
-
-    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    //     event.preventDefault()
-    //     console.log("Form submitted") // Debugging line
-    //     console.log(`Search query: ${search}`) // Debugging line
-    //     setQuery(search)
-    //     setCurrentPage(1)
-    // }
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSearch(event.target.value)
@@ -130,16 +120,8 @@ export default function CharactersList() {
                 </h1>
                 <form
                     className="flex flex-col justify-center items-center md:gap-x-4 md:flex-row gap-y-4"
-                    // onSubmit={handleSubmit}
                     name="CharactersList"
-                // method="POST"
-                // data-netlify="true"
                 >
-                    {/* <input
-                        type="hidden"
-                        name="form-name"
-                        value="CharactersList"
-                    /> */}
                     <input
                         type="text"
                         placeholder="Search characters..."
@@ -148,12 +130,6 @@ export default function CharactersList() {
                         onChange={handleChange}
                         className="px-4 py-2 border border-black rounded"
                     />
-                    {/* <button
-                        type="submit"
-                        className="px-4 py-2 bg-blue-500 text-white rounded w-full"
-                    >
-                        Search
-                    </button> */}
                 </form>
                 {characters.length > 0 ? (
                     <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">

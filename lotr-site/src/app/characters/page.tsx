@@ -39,8 +39,8 @@ export default function CharactersList() {
             setLoading(false)
         }
     }
-    console.log('Characters:', characters); // Debugging
-    console.log('Total Pages:', totalPages); // Debugging
+    console.log('Characters:', characters) // Debugging
+    console.log('Total Pages:', totalPages) // Debugging
 
     // Fetch characters when the page or query changes
     useEffect(() => {

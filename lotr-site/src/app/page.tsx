@@ -19,7 +19,7 @@ export default function Home() {
         text-xl lg:text-3xl xl:text-3xl">
           <Link className="hover:underline" href="books">Books</Link>
           <Link className="hover:underline" href="movies">Movies</Link>
-          {/* <Link className="hover:underline" href="characters">Characters</Link> */}
+          <Link className="hover:underline" href="characters">Characters</Link>
         </div>
       </div>
     </main>

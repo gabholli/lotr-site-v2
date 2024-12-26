@@ -166,31 +166,32 @@ export default function CharactersList() {
                     </button> */}
                 </form>
                 {filteredCharacters.length > 0 ? (
-                    <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
-                        {charactersMap}
-                    </div>
+                    <>
+                        <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
+                            {charactersMap}
+                        </div>
+
+                        <div className="flex justify-between w-full">
+                            <button
+                                onClick={handlePreviousPage}
+                                disabled={currentPage === 1}
+                                className="px-4 py-2 bg-blue-500 text-white rounded"
+                            >
+                                Previous
+                            </button>
+                            <button
+                                onClick={handleNextPage}
+                                disabled={currentPage === totalPages}
+                                className="px-4 py-2 bg-blue-500 text-white rounded"
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </>
                 ) : (
                     <h1 className="text-center text-2xl">
                         Please enter a valid name...
                     </h1>
-                )}
-                {filteredCharacters.length > 0 && (
-                    <div className="flex justify-between w-full">
-                        <button
-                            onClick={handlePreviousPage}
-                            disabled={currentPage === 1}
-                            className="px-4 py-2 bg-blue-500 text-white rounded"
-                        >
-                            Previous
-                        </button>
-                        <button
-                            onClick={handleNextPage}
-                            disabled={currentPage === totalPages}
-                            className="px-4 py-2 bg-blue-500 text-white rounded"
-                        >
-                            Next
-                        </button>
-                    </div>
                 )}
             </div>
         </main>

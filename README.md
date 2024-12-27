@@ -10,7 +10,7 @@ A web broswer is needed.
 ### Installing
 No installation required.
 ### Executing program
-To eccess, go to https://gabholli-lotr-site.netlify.app
+To eccess, go to https://lotr-site-v2.vercel.app/
 ## Authors
 Gabe Hollifield
 

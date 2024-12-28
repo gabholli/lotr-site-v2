@@ -22,7 +22,7 @@ export default function CharactersList() {
         try {
             console.log(`Fetching characters: page=${page}, query=${query}`) // Debugging
             const response = await axios.get(
-                `/api/character?page=${page}&pageSize=10&query=${query}`
+                `/api/character?page=${page}&pageSize=12&query=${query}`
             )
             console.log("Response:", response) // Debugging
             setCharacters(response.data.data)
@@ -77,6 +77,8 @@ export default function CharactersList() {
     // const filteredCharacters = characters.filter(char =>
     //     char.name.toLowerCase().includes(debouncedSearch.toLowerCase())
     // )
+
+    const isGrid = characters.length >= 4
 
     const charactersMap = characters?.map((character) => (
         <Link
@@ -164,7 +166,8 @@ export default function CharactersList() {
                 </form>
                 {characters.length > 0 ? (
                     <>
-                        <div className="flex flex-col justify-center items-center gap-y-10 text-xl lg:text-3xl xl:text-3xl">
+                        <div className={`${isGrid ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" : "flex flex-col"}
+                         w-full justify-center items-center gap-y-10 text-xl lg:text-3xl`}>
                             {charactersMap}
                         </div>
 

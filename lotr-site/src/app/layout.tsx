@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>LOTR Site</title>
+        <title>LOTR Compendium</title>
         <link rel="shortcut icon" type="image/x-icon" href="/book.ico" />
       </head>
       <body

@@ -9,10 +9,15 @@ export default function Credits() {
                 <h2 className='text-xl lg:text-5xl xl:text-4xl'>Credits</h2>
                 <div className='flex flex-col justify-center items-center gap-y-10 text-center
                 text-xl lg:text-3xl xl:text-3xl px-10'>
-                    <p className=''>This project uses data provided by the oneAPI licensed under
-                        Creative Commons Attribution 4.0 International
+                    <p className=''>This project uses The One API for data from The
+                        'Lord of the Rings' universe, licensed under the MIT License.
                     </p>
-                    <Link
+                    <p>
+                        This project is a fan-made demonstration using The One API. It
+                        is not affiliated with or endorsed by the official Lord of the
+                        Rings franchise.
+                    </p>
+                    {/* <Link
                         className='underline text-xl lg:text-3xl xl:text-3xl'
                         href="https://the-one-api.dev/"
                         target="_blank"
@@ -27,7 +32,7 @@ export default function Credits() {
                         rel="noopener noreferrer"
                     >
                         License information
-                    </Link>
+                    </Link> */}
 
                 </div>
             </div>

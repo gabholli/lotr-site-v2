@@ -10,11 +10,11 @@ export default function Footer() {
                 className='text-xl lg:text-2xl hover:underline'>
                 Home
             </Link>
-            {/* <Link
+            <Link
                 href='/credits'
                 className='text-xl lg:text-2xl hover:underline'>
                 Credits
-            </Link> */}
+            </Link>
         </div>
     )
 }

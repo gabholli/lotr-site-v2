@@ -17,15 +17,15 @@ export default function Credits() {
                         is not affiliated with or endorsed by the official Lord of the
                         Rings franchise.
                     </p>
-                    {/* <Link
+                    <Link
                         className='underline text-xl lg:text-3xl xl:text-3xl'
-                        href="https://the-one-api.dev/"
+                        href="https://github.com/gitfrosh/lotr-api"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Original source
                     </Link>
-                    <Link
+                    {/* <Link
                         className='underline text-xl lg:text-3xl xl:text-3xl'
                         href="https://creativecommons.org/licenses/by/4.0/"
                         target="_blank"

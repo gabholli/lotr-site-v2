@@ -10,7 +10,7 @@ export default function Credits() {
                 <div className='flex flex-col justify-center items-center gap-y-10 text-center
                 text-xl lg:text-3xl xl:text-3xl px-10'>
                     <p className=''>This project uses The One API for data from The
-                        &apos;Lord of the Rings universe&apos;, licensed under the MIT License.
+                        &lsquo;Lord of the Rings universe&rsquo;, licensed under the MIT License.
                     </p>
                     <p>
                         This project is a fan-made demonstration using The One API. It

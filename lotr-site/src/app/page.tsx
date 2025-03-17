@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="bg-trees bg-cover bg-center flex flex-col justify-center items-center
       gap-y-16">
-      <h1 className="bg-white p-2 rounded-2xl text-xl lg:text-2xl xl:text-2xl">Lord of the Rings Compendium</h1>
+      <h1 className="bg-white p-2 rounded-2xl text-xl lg:text-5xl xl:text-2xl">Lord of the Rings Compendium</h1>
 
       <div className="bg-white flex flex-col gap-y-8 lg:gap-y-10 p-6 md:p-12 rounded-3xl">
         <h1 className="text-xl lg:text-5xl xl:text-4xl underline">Choose one of the following:</h1>
